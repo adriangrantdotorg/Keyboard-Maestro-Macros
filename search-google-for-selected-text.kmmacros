@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>813116831.290133</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>ActionColor</key>
+						<string>Purple</string>
+						<key>MacroActionType</key>
+						<string>Comment</string>
+						<key>StyledText</key>
+						<data>
+						e1xydGYxXGFuc2lcYW5zaWNwZzEy
+						NTJcY29jb2FydGYyODcwClxjb2Nv
+						YXRleHRzY2FsaW5nMFxjb2NvYXBs
+						YXRmb3JtMHtcZm9udHRibFxmMFxm
+						c3dpc3NcZmNoYXJzZXQwIEhlbHZl
+						dGljYS1MaWdodDt9CntcY29sb3J0
+						Ymw7XHJlZDI1NVxncmVlbjI1NVxi
+						bHVlMjU1O30Ke1wqXGV4cGFuZGVk
+						Y29sb3J0Ymw7O30KXHBhcmRcdHg1
+						NjBcdHgxMTIwXHR4MTY4MFx0eDIy
+						NDBcdHgyODAwXHR4MzM2MFx0eDM5
+						MjBcdHg0NDgwXHR4NTA0MFx0eDU2
+						MDBcdHg2MTYwXHR4NjcyMFxwYXJk
+						aXJuYXR1cmFsXHBhcnRpZ2h0ZW5m
+						YWN0b3IwCgpcZjBcZnMyNCBcY2Yw
+						IFByZXNzIFx1YzBcdTg5OTcgRyB3
+						aXRoIHRleHQgc2VsZWN0ZWQgaW4g
+						YW55IGFwcCB0byBzZWFyY2ggR29v
+						Z2xlIGZvciBpdCBpbiB5b3VyIGRl
+						ZmF1bHQgYnJvd3Nlci4gWW91ciBj
+						bGlwYm9hcmQgaXMgbGVmdCBhcyBp
+						dCB3YXMuIFdpdGggbm90aGluZyBz
+						ZWxlY3RlZCB5b3UgZ2V0IGEgbm90
+						aWZpY2F0aW9uIGluc3RlYWQufQ==
+						</data>
+						<key>Title</key>
+						<string>How this works</string>
+					</dict>
+					<dict>
+						<key>ActionName</key>
+						<string>Remember Clipboard Seed</string>
+						<key>MacroActionType</key>
+						<string>SetVariableToText</string>
+						<key>Text</key>
+						<string>%Calculate%CLIPBOARDSEED()%</string>
+						<key>Variable</key>
+						<string>localClipSeed</string>
+					</dict>
+					<dict>
+						<key>Action</key>
+						<string>Copy</string>
+						<key>ActionName</key>
+						<string>Copy Selected Text</string>
+						<key>MacroActionType</key>
+						<string>CutCopyPaste</string>
+						<key>TimeOutAbortsMacro</key>
+						<false/>
+						<key>TimeOutPeriod</key>
+						<real>1.5</real>
+					</dict>
+					<dict>
+						<key>ActionName</key>
+						<string>If Something Was Copied</string>
+						<key>Conditions</key>
+						<dict>
+							<key>ConditionList</key>
+							<array>
+								<dict>
+									<key>ConditionType</key>
+									<string>Calculation</string>
+									<key>Text</key>
+									<string>CLIPBOARDSEED() - localClipSeed</string>
+								</dict>
+							</array>
+							<key>ConditionListMatch</key>
+							<string>All</string>
+						</dict>
+						<key>ElseActions</key>
+						<array>
+							<dict>
+								<key>ActionName</key>
+								<string>Failed Notification ❌</string>
+								<key>MacroActionType</key>
+								<string>Notification</string>
+								<key>Sound</key>
+								<string></string>
+								<key>Subtitle</key>
+								<string></string>
+								<key>Text</key>
+								<string>Nothing is selected. Select some text first.</string>
+								<key>Title</key>
+								<string>❌ %ExecutingMacro%</string>
+							</dict>
+						</array>
+						<key>MacroActionType</key>
+						<string>IfThenElse</string>
+						<key>ThenActions</key>
+						<array>
+							<dict>
+								<key>ActionName</key>
+								<string>Save Selected Text</string>
+								<key>MacroActionType</key>
+								<string>SetVariableToText</string>
+								<key>Text</key>
+								<string>%SystemClipboard%</string>
+								<key>Variable</key>
+								<string>localQuery</string>
+							</dict>
+							<dict>
+								<key>ActionName</key>
+								<string>Restore Your Previous Clipboard</string>
+								<key>MacroActionType</key>
+								<string>DeletePastClipboard</string>
+								<key>PastExpression</key>
+								<string>0</string>
+							</dict>
+							<dict>
+								<key>Action</key>
+								<string>TrimWhitespace</string>
+								<key>ActionName</key>
+								<string>Trim Whitespace</string>
+								<key>MacroActionType</key>
+								<string>Filter</string>
+								<key>Source</key>
+								<string>Variable</string>
+								<key>Variable</key>
+								<string>localQuery</string>
+							</dict>
+							<dict>
+								<key>Action</key>
+								<string>PercentEncodeForURL</string>
+								<key>ActionName</key>
+								<string>Encode for URL</string>
+								<key>MacroActionType</key>
+								<string>Filter</string>
+								<key>Source</key>
+								<string>Variable</string>
+								<key>Variable</key>
+								<string>localQuery</string>
+							</dict>
+							<dict>
+								<key>ActionName</key>
+								<string>Open Google Search in Default Browser</string>
+								<key>IsDefaultApplication</key>
+								<true/>
+								<key>MacroActionType</key>
+								<string>OpenURL</string>
+								<key>TimeOutAbortsMacro</key>
+								<true/>
+								<key>URL</key>
+								<string>https://www.google.com/search?q=%Variable%localQuery%</string>
+							</dict>
+						</array>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>813116831.290133</real>
+				<key>ModificationDate</key>
+				<real>813116831.290133</real>
+				<key>Name</key>
+				<string>Search Google for Selected Text</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>5</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>2048</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>A837759D-E7FD-45EA-A61F-9E00CD677B57</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Search Selected Text</string>
+		<key>UID</key>
+		<string>8E0C3F5A-6B2D-4C71-9A1E-3D5F7B9C2E40</string>
+	</dict>
+</array>
+</plist>
